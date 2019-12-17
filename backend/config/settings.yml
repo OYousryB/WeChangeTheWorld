@@ -1,0 +1,9 @@
+elasticsearch:
+  host: http://elasticsearch:9200
+  timeout: 30
+  log: false
+  topic: message_query
+redis:
+  url: redis://redis:6379
+token:
+  expiration: 2.hours
