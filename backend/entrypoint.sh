@@ -9,6 +9,8 @@ rm -f /backend/tmp/pids/server.pid
 cd backend
 bundle install
 
-rails db:migrate 2>/dev/null || rails db:setup
+rails db:create
+rails db:migrate
+rails db:seed
 
 exec "$@"
