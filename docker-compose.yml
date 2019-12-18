@@ -59,13 +59,13 @@ services:
     networks:
       - backend
   worker:
-    build: ./backend
+    build: ./
     volumes:
       - .:/backend
     depends_on:
       - db
       - redis
-      - elasticsearch
+      - backend
     command: bundle exec sidekiq -C ./config/sidekiq.yml -e development -r .
     networks:
       - backend
