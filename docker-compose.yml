@@ -58,8 +58,19 @@ services:
       - 9200:9200
     networks:
       - backend
-  worker:
-    build: ./
+  worker_1:
+    build: ./backend
+    volumes:
+      - .:/backend
+    depends_on:
+      - db
+      - redis
+      - backend
+    command: bundle exec sidekiq -C ./config/sidekiq.yml -e development -r .
+    networks:
+      - backend
+  worker_2:
+    build: ./backend
     volumes:
       - .:/backend
     depends_on:
